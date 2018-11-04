@@ -21,3 +21,7 @@ Running command `scanme init` generates `SCANME.md` file with formats under the 
 ```
 
 The values at each level provide ability to specify [metaformat](https://book.mindey.com/metaformat/0001-metaform-philosophy/0001-metaform-philosophy.html) for each file and directory in the project by providing URLs to schema specifications.
+
+
+# TODO
+- Implement ignoring of files based on `.gitignore`, and using regex (look for strings `SKIP` in the project).

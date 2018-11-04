@@ -9,8 +9,8 @@ def nested_set(dic, keys, value):
 def dir_metatree(
         _ROOT_='.',
         ignore_dot_files=True,
-        ignore_extensions=['.pyc'],
-        ignore_dirs=['__pycache__', '.egg-info']
+        ignore_extensions=['.pyc', '.tar.gz'],
+        ignore_dirs=['__pycache__', '.egg-info', 'dist']
     ):
 
     _LEAF_ = {'*': ''}
@@ -18,11 +18,13 @@ def dir_metatree(
 
     for dirName, subdirList, fileList in os.walk(_ROOT_):
 
+        # SKIP
         if dirName.startswith('./.') and ignore_dot_files:
             continue
 
         dirPath = dirName.split('/')[1:]
 
+        # SKIP
         if dirPath:
             if any([dirPath[-1].endswith(ignore) for ignore in ignore_dirs]):
                 continue
@@ -35,9 +37,11 @@ def dir_metatree(
 
         for fname in fileList:
 
+            # SKIP
             if fname.startswith('.') and ignore_dot_files:
                 continue
 
+            # SKIP
             if any([fname.endswith(ignore) for ignore in ignore_extensions]):
                 continue
 

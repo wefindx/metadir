@@ -22,8 +22,8 @@ class Init(Base):
 
         data = dir_metatree()
 
-        print(
-            yaml.dump(
-                json.loads(
-                    json.dumps(data)), allow_unicode=True)
-        )
+        as_string = yaml.dump(json.loads(json.dumps(data)), allow_unicode=True)
+
+        content = '# FORMAT\n```yaml\n{}```'.format(as_string)
+
+        print(content)
