@@ -38,10 +38,6 @@ def dir_metatree(
         for fname in fileList:
 
             # SKIP
-            if fname.startswith('.') and ignore_dot_files:
-                continue
-
-            # SKIP
             if any([fname.endswith(ignore) for ignore in ignore_extensions]):
                 continue
 
