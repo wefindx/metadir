@@ -1,9 +1,9 @@
 # Introduction
 
-To autogenerate SCANME.md, you can globally `pip install scanme`, and type `scanme`. Default limits scanning up to 2 levels depth. Type `scanme --all` to produce `SCANME.md` content from all subdirectories.
+To autogenerate SCANME.md, you can globally `pip install scanme`, and type `scanme init`.
 
 # Usage
-Running command `scanme init` generates `SCANME.md` file with formats under the `FORMAT` heading, as so:
+Running command `scanme init > SCANME.md` to generate `SCANME.md` content.
 
 ```yaml
 - '*': ''
