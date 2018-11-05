@@ -13,15 +13,7 @@ class Init(Base):
 
     def run(self):
 
-        level = 2
-
-        if len(sys.argv) == 3:
-            try:
-                level = int(sys.argv[-1])
-            except:
-                pass
-
-        data = dir_metatree()
+        data = dir_metatree(ignore_dot_files=not self.options.get('--all'))
 
         as_string = yaml.dump(data, allow_unicode=True)
 

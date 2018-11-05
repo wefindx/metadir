@@ -3,10 +3,13 @@ scanme
 
 Usage:
   scanme dirs
+  scanme dirs -a | --all
   scanme -h | --help
   scanme --version
 
 Options:
+  -a --all                          Does not ignore dot files
+  -i --ignore                       Regex to igore
   -h --help                         Show this screen.
   --version                         Show version.
 
@@ -30,6 +33,7 @@ def main():
     """Main CLI entrypoint."""
     import scanme.commands
     options = docopt(__doc__, version=VERSION)
+    # print(options)
 
     for (k, v) in options.items():
 
