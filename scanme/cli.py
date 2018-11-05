@@ -2,8 +2,7 @@
 scanme
 
 Usage:
-  scanme init
-  scanme init <level>
+  scanme dirs
   scanme -h | --help
   scanme --version
 
@@ -12,7 +11,7 @@ Options:
   --version                         Show version.
 
 Examples:
-  scanme init
+  scanme
 
 Help:
   For help using this tool, please open an issue on the Github repository:
@@ -33,6 +32,9 @@ def main():
     options = docopt(__doc__, version=VERSION)
 
     for (k, v) in options.items():
+
+        if k in ['dirs']:
+            k = 'init'
 
         if hasattr(scanme.commands, k) and v:
             module = getattr(scanme.commands, k)
