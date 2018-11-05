@@ -24,7 +24,7 @@ def dir_metatree(_ROOT_='.'):
         try:
             get_from_dict(data, dirPath)
         except:
-            nested_set(tree, dirPath, _LEAF_)
+            nested_set(data, dirPath, _LEAF_)
 
         for fname in fileList:
 
