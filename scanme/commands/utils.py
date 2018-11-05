@@ -1,4 +1,10 @@
 import os
+from functools import reduce
+import operator
+
+
+def get_from_dict(data, map_list):
+    return reduce(operator.getitem, map_list, data)
 
 def nested_set(dic, keys, value):
     for key in keys[:-1]:
@@ -15,11 +21,10 @@ def dir_metatree(_ROOT_='.'):
 
         dirPath = dirName.split('/')[1:]
 
-        tree = {}
-        for k in reversed(dirPath):
-            tree = dict(_LEAF_, **{k: tree})
-
-        data.update(tree)
+        try:
+            get_from_dict(data, dirPath)
+        except:
+            nested_set(tree, dirPath, _LEAF_)
 
         for fname in fileList:
 
