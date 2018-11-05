@@ -2,6 +2,7 @@ import os
 import sys
 import yaml
 import json
+import pickle
 from .base import Base
 from .utils import dir_metatree
 
@@ -22,7 +23,7 @@ class Init(Base):
 
         data = dir_metatree()
 
-        as_string = yaml.dump(json.loads(json.dumps(data)), allow_unicode=True)
+        as_string = yaml.dump(data, allow_unicode=True)
 
         content = '# FORMAT\n```yaml\n{}```'.format(as_string)
 

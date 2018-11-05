@@ -1,10 +1,11 @@
 import os
 from functools import reduce
 import operator
+import copy
 
 
-def get_from_dict(data, map_list):
-    return reduce(operator.getitem, map_list, data)
+def get_from_dict(data_dict, map_list):
+    return reduce(operator.getitem, map_list, data_dict)
 
 def nested_set(dic, keys, value):
     for key in keys[:-1]:
@@ -24,14 +25,16 @@ def dir_metatree(_ROOT_='.'):
         try:
             get_from_dict(data, dirPath)
         except:
-            nested_set(data, dirPath, _LEAF_)
+            nested_set(data, dirPath, copy.copy(_LEAF_))
 
         for fname in fileList:
 
             if dirPath:
-                nested_set(data, dirPath, {fname: _LEAF_})
+                nested_set(data, dirPath, {fname: copy.copy(_LEAF_)})
 
             else:
-                data[fname] = _LEAF_
+                data[fname] = copy.copy(_LEAF_)
 
     return data
+
+
