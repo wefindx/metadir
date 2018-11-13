@@ -1,11 +1,11 @@
 """
-scanme
+metadir
 
 Usage:
-  scanme dirs
-  scanme dirs -a | --all
-  scanme -h | --help
-  scanme --version
+  metadir <path>
+  metadir <path> -a | --all
+  metadir -h | --help
+  metadir --version
 
 Options:
   -a --all                          Does not ignore dot files
@@ -14,11 +14,11 @@ Options:
   --version                         Show version.
 
 Examples:
-  scanme
+  metadir
 
 Help:
   For help using this tool, please open an issue on the Github repository:
-  https://github.com/wefindx/scanme
+  https://gitlab.com/wefindx/metadir
 """
 
 
@@ -31,18 +31,18 @@ from . import __version__ as VERSION
 
 def main():
     """Main CLI entrypoint."""
-    import scanme.commands
+    import metadir.commands
     options = docopt(__doc__, version=VERSION)
     # print(options)
 
     for (k, v) in options.items():
 
-        if k in ['dirs']:
+        if options.get('<path>'):
             k = 'init'
 
-        if hasattr(scanme.commands, k) and v:
-            module = getattr(scanme.commands, k)
-            scanme.commands = getmembers(module, isclass)
-            command = [command[1] for command in scanme.commands if command[0] != 'Base'][0]
+        if hasattr(metadir.commands, k) and v:
+            module = getattr(metadir.commands, k)
+            metadir.commands = getmembers(module, isclass)
+            command = [command[1] for command in metadir.commands if command[0] != 'Base'][0]
             command = command(options)
             command.run()

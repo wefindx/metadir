@@ -13,7 +13,10 @@ class Init(Base):
 
     def run(self):
 
-        data = dir_metatree(ignore_dot_files=not self.options.get('--all'))
+        data = dir_metatree(
+            _ROOT_=self.options.get('<path>') or '.',
+            ignore_dot_files=not self.options.get('--all')
+        )
 
         as_string = yaml.dump(data, allow_unicode=True)
 

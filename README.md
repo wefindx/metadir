@@ -1,9 +1,9 @@
 # Introduction
 
-To autogenerate SCANME.md, you can globally `pip install scanme`, and type `scanme init`.
+To autogenerate SCANME.md, you can globally `pip install metadir`, and type `metadir .`.
 
 # Usage
-Running command `scanme init > SCANME.md` to generate `SCANME.md` content.
+Running command `metadir .` to generate `SCANME.md` content.
 
 ```yaml
 - '*': ''

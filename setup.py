@@ -6,7 +6,7 @@ from subprocess import call
 
 from setuptools import Command, find_packages, setup
 
-from scanme import __version__
+from metadir import __version__
 
 
 this_dir = abspath(dirname(__file__))
@@ -27,16 +27,16 @@ class RunTests(Command):
 
     def run(self):
         """Run all tests!"""
-        errno = call(['py.test', '--cov=scanme', '--cov-report=term-missing'])
+        errno = call(['py.test', '--cov=metadir', '--cov-report=term-missing'])
         raise SystemExit(errno)
 
 
 setup(
-    name = 'scanme',
+    name = 'metadir',
     version = __version__,
-    description = 'A command line program to generate SCANME.md file.',
+    description = 'A command line program to generate SCANME.md file content.',
     long_description = long_description,
-    url = 'https://github.com/wefindx/scanme',
+    url = 'https://gitlab.com/wefindx/metadir',
     author = 'Mindey',
     author_email = 'mindey@qq.com',
     license = 'MIT',
@@ -65,7 +65,7 @@ setup(
     },
     entry_points = {
         'console_scripts': [
-            'scanme=scanme.cli:main',
+            'metadir=metadir.cli:main',
         ],
     },
     cmdclass = {'test': RunTests},
