@@ -22,6 +22,7 @@ class Init(Base):
         # as_string = yaml.dump(data, allow_unicode=True)
         as_string = pprint.pformat(data)
 
-        content = '# FORMAT\n```yaml\n{}```'.format(as_string)
+        # content = '# FORMAT\n```yaml\n{}```'.format(as_string)
+        content = '{}```'.format(as_string)
 
         print(content)
