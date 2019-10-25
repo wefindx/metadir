@@ -3,6 +3,7 @@ import sys
 import yaml
 import json
 import pickle
+import pprint
 from .base import Base
 from .utils import dir_metatree
 
@@ -18,7 +19,8 @@ class Init(Base):
             ignore_dot_files=not self.options.get('--all')
         )
 
-        as_string = yaml.dump(data, allow_unicode=True)
+        # as_string = yaml.dump(data, allow_unicode=True)
+        as_string = pprint.pformat(data)
 
         content = '# FORMAT\n```yaml\n{}```'.format(as_string)
 
